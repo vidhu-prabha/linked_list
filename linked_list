@@ -1,0 +1,133 @@
+# initialize empty node
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+# insert the node at begining
+    def __init__(self):
+        self.head = None
+        
+    def insert_at_begin(self,data):
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+            return
+        else:
+            new_node.next = self.head
+            self.head = new_node
+            
+ # insert the node at the end           
+    def insert_at_end(self,data):
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+            return
+        current_node = self.head
+        while(current_node.next):
+            current_node = current_node.next
+        current_node.next = new_node
+
+# insert the node at specific index
+    def insert_at_index(self,data, index):
+        if index == 0:
+            self.insert_at_begin(data)
+        current_pos = 0
+        current_node = self.head
+        while (current_node != None and current_pos + 1 != index):
+            current_pos += 1
+            current_node = current_node.next
+
+        if current_node != None:
+            new_node = Node(data)
+            new_node.next = current_node.next
+            current_node.next = new_node
+        else:
+            print('index not found')
+            
+#update the node of linked list
+
+    def update_node(self,val,index):
+        current_pos = 0
+        current_node = self.head
+        if index == current_pos:
+            current_node.data = val
+        else:
+            while(current_node != None and current_pos + 1 != index):
+                current_node = current_node.next
+                current_pos += 1
+            if current_node !=None:
+                current_node.data = val
+            else:
+                print('index not found')
+                
+# Delete the node from begining
+    def del_at_begin(self):
+        if self.head == None:
+            return
+        else:
+            self.head = self.head.next
+
+# Delete the node from end
+    def del_at_end(self):
+        if self.head == None:
+            return
+        current_node = self.head
+        while (current_node != None and current_node.next.next !=None):
+            current_node = current_node.next
+        current_node=None
+
+# Delete the node from specific index
+    def del_at_index(self,index):
+        if self.head == None:
+            return
+        current_node = self.head
+        current_pos = 0
+        if current_pos == index:
+            self.del_at_begin()
+        else:
+            while (current_node != None and current_pos +1 != index):
+                current_node = current_node.next
+                current_pos += 1
+            if current_node != None:
+                current_node.next = current_node.next.next
+            else:
+                print('index not found')
+            
+# Delete the node at given Data
+    def del_at_data(self,data):
+        if self.head == None:
+            return
+        current_pos = 0
+        current_node = self.head
+        if current_node.data == data:
+            self.del_at_begin()
+        else:
+            while(current_node != None and current_node.next.data != data):
+                current_node = current_node.next
+                current_pos += 1
+            if currrent_node != None:
+                current_node.next = current.node.next.next
+            else:
+                print ('Data not found')
+                return
+
+#Traversal of linked list
+    def print_LL(self):
+        current_node = self.head
+        while(current_node != None):
+            print(current_node.data)
+            current_node = current_node.next
+
+# Get size of Node
+    def size_of_LL(self):
+        size = 0
+        if (self.head):
+            current_node = self.head
+            while (current_node):
+                current_node = current_node.next
+                size += 1
+            return size
+        else:
+            return 0
