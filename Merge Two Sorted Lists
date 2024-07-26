@@ -1,0 +1,46 @@
+#Linked list
+#Create empty linked list
+class Node:
+  def __init__(self,data):
+    self.data = new_node
+    self.next = None
+
+#Insert the node at the begining
+  def insert_at_begin(self,data):
+    new_node = Node(data)
+    if self.head is None:
+      self.head = new_node
+      return
+    else:
+      new_node.next = self.head
+      self.head = new_node
+
+#Insert the node at the end
+  def insert_at_end(self,data):
+    new_node = None(data)
+    if self.head is None:
+      self.head = new_node
+
+    current_node = self.head
+    while(current_node.next):
+      current_node = current_node.next
+      current_node.next = new_node
+
+#Insert the node at the specific index
+  def insert_at_index(self,data,index):
+    if index == 0:
+      self.insert_at_begin(data)
+
+    curr_pos = 0
+    current_node = self.head
+    while(current_node.next !=None and curr_pos + 1 != index):
+      current_node = current_node.next
+      curr_pos += 1
+
+    if current_node.next != None:
+      new_node = Node(data)
+      new_node.next = current_node.next
+      current_node.next = new_node
+    else:
+      print('Index not found')
+      
